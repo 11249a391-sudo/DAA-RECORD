@@ -4,7 +4,6 @@
 
 int visited[V];
 
-// Find minimum key vertex
 int minKey(int key[], int mstSet[]) {
     int min = INF, min_index;
 
@@ -17,7 +16,6 @@ int minKey(int key[], int mstSet[]) {
     return min_index;
 }
 
-// Print DFS traversal (approximate TSP path)
 void dfs(int graph[V][V], int u) {
     visited[u] = 1;
     printf("%d ", u);
@@ -28,7 +26,6 @@ void dfs(int graph[V][V], int u) {
     }
 }
 
-// Prim’s Algorithm to build MST
 void primMST(int graph[V][V]) {
     int parent[V];
     int key[V];
@@ -55,7 +52,6 @@ void primMST(int graph[V][V]) {
         }
     }
 
-    // Build MST graph
     int mst[V][V] = {0};
 
     for (int i = 1; i < V; i++) {
@@ -63,13 +59,12 @@ void primMST(int graph[V][V]) {
         mst[parent[i]][i] = graph[i][parent[i]];
     }
 
-    // DFS traversal for TSP approximation
     for (int i = 0; i < V; i++)
         visited[i] = 0;
 
     printf("Approximate TSP path:\n");
     dfs(mst, 0);
-    printf("0\n"); // return to start
+    printf("0\n");
 }
 
 int main() {
